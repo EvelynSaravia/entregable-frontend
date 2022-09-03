@@ -1,4 +1,7 @@
 import React from 'react'
+import Item from './Item'
+import data from './data'
+
 
 // Debemos importar el listado de objetos del archivo JSON para usarlos como array a la hora de crear cada Item.
 // El componente Listado es el padre de:
@@ -7,10 +10,12 @@ import React from 'react'
 // MÉTODOS: Listado no requiere de métodos.
 // PROPS: Listado recibe el método para aumentar el estado de App y se lo pasa a cada uno de sus hijos.
 
-export default function Listado() {
+export default function Listado({actualizar}) {
+  const productos = data
+
   return (
     <div className='container'>
-      {/* renderizamos los Item aquí */}
+      {productos.map((producto)=> <Item key= {producto.id} nombre={producto.producto.nombre} desc = {producto.producto.descripcion} stock ={producto.stock} actualizarStk={actualizar}/>)}
     </div>
   )
 }

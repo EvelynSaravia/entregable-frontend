@@ -1,3 +1,8 @@
+import Cabecera from './components/Cabecera.js'
+import Listado from './components/Listado.js'
+import React from 'react'
+import { useState } from 'react'
+
 // El componente App es el padre de:
 // - Cabecera
 // - Listado
@@ -5,12 +10,17 @@
 // MÉTODOS: App debe tener un método para aumentar este número y que pueda ser ejecutado por su nieto Item.
 // PROPS: App deberá pasar por props lo necesario a sus componenetes internos.
 
-function App() {
+function App(){
+  const [carrito, setCarrito]= useState(0)
+
+  const actualizar= (cantCompra) => {
+    setCarrito(cantCompra)
+  }
 
   return (
     <div className="App">
-      <Cabecera />
-      <Listado />
+      <Cabecera carrito={carrito} />
+      <Listado actualizar={actualizar}/>
     </div>
   );
 }

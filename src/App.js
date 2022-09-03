@@ -12,9 +12,11 @@ import { useState } from 'react'
 
 function App(){
   const [carrito, setCarrito]= useState(0)
+  const [acumulado, setAcumulado] = useState(0)
 
   const actualizar= (cantCompra) => {
-    setCarrito(cantCompra)
+    setAcumulado(cantCompra+acumulado)
+    setCarrito(acumulado)
   }
 
   return (
